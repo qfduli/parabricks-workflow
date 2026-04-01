@@ -1,0 +1,18 @@
+# Every entry must be formatted "<key>: <value>"
+
+cnnscorevariants = ["GATK: 4.0.12.0"]
+deepvariant = ["DeepVariant: 1.9.0"]
+deepsomatic = ["DeepVariant: 1.9.0"]
+pangenome_aware_deepvariant = ["DeepVariant: 1.9.0"]
+fq2bam = ["BWA mem: 0.7.15", "Picard: 2.18.25"]
+fq2bam_meth = ["Bwa-meth: 0.2.7", "BWA mem: 0.7.15", "Picard: 2.18.25"]
+haplotypecaller = ["GATK: 4.3.0.0"]
+mutectcaller = ["GATK: 4.3.0.0"]
+rna_fq2bam = ["STAR: 2.7.2a"]
+prepon = ["GATK: 4.3.0.0"]
+postpon = ["GATK: 4.3.0.0"]
+bammetrics = ["GATK: 4.3.0.0"]
+indexgvcf = ["GATK: 4.3.0.0"]
+dbsnp = ["GATK: 4.3.0.0"]
+minimap2 = ["minimap2: 2.30"]
+giraffe = ["VG-giraffe: 1.70.0"]

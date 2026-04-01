@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+
+import random, string
+import pbargs
+import pb_compose
+import os
+import os.path
+import pbutils
+
+
+def RunDNABricks(runArgs):
+    installDir = pbutils.GetHostFolder(__file__)
+    cmdLine = [os.path.join(installDir, "run_pb.py")]
+    pb_compose.composeRun(cmdLine, runArgs)
+    return
+
+
+def pb_main(runArgs):
+    runArgs.runArgs.tmp_dir = \
+        os.path.join(pbutils.GetUnmappedHostFolder(runArgs.runArgs.tmp_dir + '/'),
+                     ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8)))
+    try:
+        os.makedirs(runArgs.runArgs.tmp_dir)
+    except OSError as e:
+        print("Could not create temporary directory " + runArgs.runArgs.tmp_dir + ". Exiting ...")
+        pbutils.pbExit(1)
+    pbutils.runTempDir = runArgs.runArgs.tmp_dir
+    RunDNABricks(runArgs)
+    if runArgs.runArgs.keep_tmp is None:
+        pbutils.deleteTmpDir()
+
+
+if __name__ == '__main__':
+    print("Please visit https://docs.nvidia.com/clara/#parabricks for detailed documentation\n", flush=True)
+    runArgs = pbargs.getArgs()
+    pb_main(runArgs)
